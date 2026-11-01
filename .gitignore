@@ -1,0 +1,10 @@
+*.o
+*.obj
+*.exe
+*.out
+Exemplos/Ex00
+Exemplos/Ex01A
+Exemplos/Ex01B
+Exemplos/Ex01C
+Exemplos/Ex02
+Exemplos/Ex03
