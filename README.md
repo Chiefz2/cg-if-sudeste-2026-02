@@ -2,15 +2,11 @@
 
 Repositório público com os materiais teóricos, roteiros de laboratório e códigos-fonte de exemplo da disciplina de **Computação Gráfica**.
 
----
-
 ## Download de Vídeos e Instaladores (Arquivos Grandes)
 
 Para manter a clonagem do repositório leve, os vídeos demonstrativos (`.mp4`) e os instaladores completos para Windows e macOS (JDK, Apache NetBeans, MinGW e GLUT) estão hospedados na aba **Releases** deste repositório:
 
 * **[Clique aqui para acessar a Release v1.0 e baixar os Vídeos e Instaladores](https://github.com/Chiefz2/cg-if-sudeste-2026-02/releases/tag/v1.0)**
-
----
 
 ## Estrutura do Repositório
 
@@ -22,6 +18,7 @@ Para manter a clonagem do repositório leve, os vídeos demonstrativos (`.mp4`) 
 * **`1º Laboratório.pdf`**: Roteiro prático de exercícios iniciais.
 
 ### Códigos Práticos (`Exemplos/`)
+* **`Makefile`**: Script de automação para compilar todos os exemplos de uma só vez.
 * **`_Esqueleto.cpp`**: Estrutura base (template) de um programa OpenGL/GLUT.
 * **`_Linker Flags.txt`**: Parâmetros de linkedição para compilar projetos GLUT no Windows.
 * **`Ex00.cpp`**: Criação de janela e desenho básico no plano 2D.
@@ -29,31 +26,41 @@ Para manter a clonagem do repositório leve, os vídeos demonstrativos (`.mp4`) 
 * **`Ex02.cpp`**: Manipulação de viewport e projeção ortográfica (`gluOrtho2D`).
 * **`Ex03.cpp`**: Interação via eventos e aplicação prática de transformações.
 
----
-
-## Como Configurar o Ambiente e Compilar
+## Como Configurar o Ambiente
 
 ### No Linux (Debian, Ubuntu, Linux Mint, antiX)
-Instale o compilador C++ e as bibliotecas de desenvolvimento do FreeGLUT via terminal:
-```bash
-sudo apt update
-sudo apt install build-essential freeglut3-dev libglu1-mesa-dev mesa-common-dev
-```
-Para compilar e executar qualquer exemplo:
-```bash
-cd Exemplos/
-g++ Ex00.cpp -o Ex00 -lGL -lGLU -lglut
-./Ex00
-```
+Instale o compilador C++, o utilitário `make` e as bibliotecas de desenvolvimento do FreeGLUT via terminal:
+
+    sudo apt update
+    sudo apt install build-essential freeglut3-dev libglu1-mesa-dev mesa-common-dev
 
 ### No Windows (MinGW / IDEs C++)
 Baixe os instaladores na **[Release v1.0](https://github.com/Chiefz2/cg-if-sudeste-2026-02/releases/tag/v1.0)** e configure as *Linker Flags* conforme o arquivo `Exemplos/_Linker Flags.txt`:
-```text
--lfreeglut -lglu32 -lopengl32
-```
-Para compilar via terminal (MinGW):
-```cmd
-cd Exemplos
-g++ Ex00.cpp -o Ex00.exe -lfreeglut -lglu32 -lopengl32
-Ex00.exe
-```
+
+    -lfreeglut -lglu32 -lopengl32
+
+## Como Compilar e Executar os Exemplos
+
+### Opção 1: Compilação Automática com Makefile (Recomendado)
+Entre na pasta `Exemplos/` e execute o comando `make` para compilar todos os exercícios (`Ex00` a `Ex03`) simultaneamente:
+
+    cd Exemplos/
+    make
+    ./Ex00
+
+Para apagar todos os arquivos executáveis gerados e limpar a pasta:
+
+    make clean
+
+### Opção 2: Compilação Manual Individual (g++)
+No Linux:
+
+    cd Exemplos/
+    g++ Ex00.cpp -o Ex00 -lGL -lGLU -lglut
+    ./Ex00
+
+No Windows (MinGW):
+
+    cd Exemplos
+    g++ Ex00.cpp -o Ex00.exe -lfreeglut -lglu32 -lopengl32
+    Ex00.exe
